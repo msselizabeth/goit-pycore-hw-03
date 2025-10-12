@@ -1,7 +1,7 @@
 from datetime import datetime, timedelta
 
 users = [
-    {"name": "John Doe", "birthday": "1985.01.03"},
+    {"name": "John Doe", "birthday": "198501.03"},
     {"name": "Jane Smith", "birthday": "1990.12.30"},
     {"name": "Sam Neil", "birthday": "1985.10.19"},
     {"name": "Jack Taylor", "birthday": "1990.10.12"},
@@ -18,7 +18,12 @@ def get_upcoming_birthdays(users):
 
     for user in users:
         # The original birthday
-        birthday = datetime.strptime(user["birthday"], "%Y.%m.%d").date()
+        # birthday = datetime.strptime(user["birthday"], "%Y.%m.%d").date()
+        try:
+            birthday = datetime.strptime(user["birthday"], "%Y.%m.%d").date()
+        except ValueError:
+            print(f"Time data {user["birthday"]} for {user["name"]} does not match")
+            continue
 
         # Create birthday for current year
         birthday_this_year = datetime(current_year, birthday.month, birthday.day).date()
