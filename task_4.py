@@ -18,7 +18,6 @@ def get_upcoming_birthdays(users):
 
     for user in users:
         # The original birthday
-        # birthday = datetime.strptime(user["birthday"], "%Y.%m.%d").date()
         try:
             birthday = datetime.strptime(user["birthday"], "%Y.%m.%d").date()
         except ValueError:
