@@ -16,7 +16,7 @@ def get_days_from_today(date):
     # getting current date
     now = datetime.now().date()
 
-    return (parsed_date - now).days
+    return (now - parsed_date).days
 
 
 print(get_days_from_today("2020-10-09"))
